@@ -27,20 +27,25 @@ export default function Pokemon({ data }) {
     </div>
   );
 }
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
+//static site generation
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts.
+//   // You can use any data fetching library
+//   const res = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu');
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
+//server side generation
+export async function getServerSideProps() {
+  // Fetch data from external API
   const res = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu');
   const data = await res.json();
-  //   axios.get('https://pokeapi.co/api/v2/pokemon/pikachu').then((res) => {
-  //     console.log(res);
-  //     setState({ name: res.data.name });
-  //   });
-  // By returning { props: posts }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      data,
-    },
-  };
+
+  // Pass data to the page via props
+  return { props: { data } };
 }
