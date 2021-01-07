@@ -11,6 +11,18 @@ export default function About() {
       </Head>
       <h1>About</h1>
       <p>This is the about page </p>
+      <style global jsx>
+        {`
+          body {
+            background: yellow;
+            color: black;
+          }
+          h1 {
+            font-family: sans-serif;
+            font-size: 5rem;
+          }
+        `}
+      </style>
     </div>
   );
 }
