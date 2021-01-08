@@ -1,8 +1,15 @@
+//imports
 import Head from 'next/head';
+import Link from 'next/link';
+import matter from 'gray-matter';
+import fs from 'fs';
+import path from 'path';
+import moment from 'moment';
 import styles from '../styles/Home.module.css';
+//component imports
 import Layout from '../components/layout.js';
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <Layout id="wrapper" className={styles.container}>
       <Head>
@@ -34,84 +41,22 @@ export default function Home() {
       <div id="main">
         {/* One */}
         <section id="one" className="tiles">
-          <article>
-            <span className="image">
-              <img src="/assets/images/pic01.jpg" alt="" />
-            </span>
-            <header className="major">
-              <h3>
-                <a href="landing.html" className="link">
-                  Aliquam
-                </a>
-              </h3>
-              <p>Ipsum dolor sit amet</p>
-            </header>
-          </article>
-          <article>
-            <span className="image">
-              <img src="/assets/images/pic02.jpg" alt="" />
-            </span>
-            <header className="major">
-              <h3>
-                <a href="landing.html" className="link">
-                  Tempus
-                </a>
-              </h3>
-              <p>feugiat amet tempus</p>
-            </header>
-          </article>
-          <article>
-            <span className="image">
-              <img src="/assets/images/pic03.jpg" alt="" />
-            </span>
-            <header className="major">
-              <h3>
-                <a href="landing.html" className="link">
-                  Magna
-                </a>
-              </h3>
-              <p>Lorem etiam nullam</p>
-            </header>
-          </article>
-          <article>
-            <span className="image">
-              <img src="/assets/images/pic04.jpg" alt="" />
-            </span>
-            <header className="major">
-              <h3>
-                <a href="landing.html" className="link">
-                  Ipsum
-                </a>
-              </h3>
-              <p>Nisl sed aliquam</p>
-            </header>
-          </article>
-          <article>
-            <span className="image">
-              <img src="/assets/images/pic05.jpg" alt="" />
-            </span>
-            <header className="major">
-              <h3>
-                <a href="landing.html" className="link">
-                  Consequat
-                </a>
-              </h3>
-              <p>Ipsum dolor sit amet</p>
-            </header>
-          </article>
-          <article>
-            <span className="image">
-              <img src="/assets/images/pic06.jpg" alt="" />
-            </span>
-            <header className="major">
-              <h3>
-                <a href="landing.html" className="link">
-                  Etiam
-                </a>
-              </h3>
-              <p>Feugiat amet tempus</p>
-            </header>
-          </article>
+          {/* loop over posts */}
+          {posts.map((post) => (
+            <article>
+              <span className="image" style={{ position: 'relative' }}>
+                <img src={`/assets/images/${post.featured_image}`} alt="" />
+              </span>
+              <header className="major">
+                <h3>
+                  <Link href={`/${post.slug}`} className="link">
+                    {post.title}
+                  </Link>
+                </h3>
+                {/* <p>Ipsum dolor sit amet</p> */}
+              </header>
+            </article>
+          ))}
         </section>
         {/* Two */}
         <section id="two">
@@ -141,3 +86,31 @@ export default function Home() {
     </Layout>
   );
 }
+export const getStaticProps = async () => {
+  const sortPosts = () => {
+    const allPosts = fs.readdirSync('posts').map((filename) => {
+      const file = fs.readFileSync(path.join('posts', filename)).toString();
+
+      const postData = matter(file);
+      return {
+        content: postData.content,
+        title: postData.data.title,
+        featured_image: postData.data.featured_image,
+        data: postData.data.date,
+        slug: postData.data.slug,
+      };
+    });
+    return allPosts.sort(
+      (a, b) =>
+        new moment(a.data).format('YYYY-MM-DD HH:mm:ss') <
+        new moment(b.data).format('YYYY-MM-DD HH:mm:ss')
+    );
+  };
+
+  return {
+    props: {
+      slug: 'test',
+      posts: sortPosts(),
+    },
+  };
+};

@@ -2,7 +2,7 @@
 title: Favorite Songs of 2020
 slug: favorite-songs-of-2020
 featured_image: favorite-songs-of-2020.jpg
-date: '2020-01-20 12:33:23'
+date: '2020-12-20 12:33:23'
 ---
 
 ## This is a blog post about Favorite Songs of 2020
