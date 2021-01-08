@@ -1,9 +1,13 @@
 import Head from 'next/head';
 import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import marked from 'marked';
+//components
 import styles from '../styles/Home.module.css';
 import Layout from '../components/layout.js';
 
-export default function Home() {
+export default function PostPage({ postData, content }) {
   return (
     <Layout id="wrapper" className={styles.container}>
       <Head>
@@ -14,42 +18,12 @@ export default function Home() {
         <section id="one">
           <div className="inner">
             <header className="major">
-              <h1>Generic</h1>
+              <h1>{postData.title}</h1>
             </header>
             <span className="image main">
-              <img src="/assets/images/pic11.jpg" alt="" />
+              <img src={`/assets/images/${postData.featured_image}`} alt="" />
             </span>
-            <p>
-              Donec eget ex magna. Interdum et malesuada fames ac ante ipsum
-              primis in faucibus. Pellentesque venenatis dolor imperdiet dolor
-              mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-              auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit
-              amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a
-              elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris.
-              Curabitur sapien risus, commodo eget turpis at, elementum
-              convallis elit. Pellentesque enim turpis, hendrerit.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora
-              torquent per conubia nostra, per inceptos himenaeos. Etiam
-              tristique libero eu nibh porttitor fermentum. Nullam venenatis
-              erat id vehicula viverra. Nunc ultrices eros ut ultricies
-              condimentum. Mauris risus lacus, blandit sit amet venenatis non,
-              bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at,
-              euismod in lectus. Pellentesque habitant morbi tristique senectus
-              et netus et malesuada fames ac turpis egestas. In non lorem sit
-              amet elit placerat maximus. Pellentesque aliquam maximus risus,
-              vel sed vehicula.
-            </p>
-            <p>
-              Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              Pellentesque venenatis dolor imperdiet dolor mattis sagittis.
-              Praesent rutrum sem diam, vitae egestas enim auctor sit amet.
-              Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien
-              risus, commodo eget turpis at, elementum convallis elit.
-              Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.
-            </p>
+            <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </section>
       </div>
@@ -58,22 +32,25 @@ export default function Home() {
 }
 export const getStaticPaths = async () => {
   const files = fs.readdirSync('posts');
-  console.log(files);
   const paths = files.map((filename) => ({
     params: {
       slug: filename.replace('.md', ''),
     },
   }));
-  console.log('paths: ', paths);
   return {
     paths,
     fallback: false,
   };
 };
 export const getStaticProps = async ({ params: { slug } }) => {
+  const post = fs.readFileSync(path.join('posts', `${slug}.md`)).toString();
+  const postData = matter(post);
+  const content = marked(postData.content);
   return {
     props: {
       slug,
+      content,
+      postData: postData.data,
     },
   };
 };
