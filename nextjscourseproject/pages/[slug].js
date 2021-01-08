@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import fs from 'fs';
 import styles from '../styles/Home.module.css';
 import Layout from '../components/layout.js';
 
@@ -55,3 +56,24 @@ export default function Home() {
     </Layout>
   );
 }
+export const getStaticPaths = async () => {
+  const files = fs.readdirSync('posts');
+  console.log(files);
+  const paths = files.map((filename) => ({
+    params: {
+      slug: filename.replace('.md', ''),
+    },
+  }));
+  console.log('paths: ', paths);
+  return {
+    paths,
+    fallback: false,
+  };
+};
+export const getStaticProps = async ({ params: { slug } }) => {
+  return {
+    props: {
+      slug,
+    },
+  };
+};
