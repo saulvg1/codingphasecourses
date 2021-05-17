@@ -1,0 +1,107 @@
+// These are the styles to make some of the templates look extra nice.
+// Feel free to remove these styles for production!
+
+// Body Styles
+html,
+body,
+.body {
+	background-color: $body-background;
+	background: $body-background;
+}
+
+body,
+html,
+.body {
+	background: #f3f3f3 !important;
+}
+
+.container.header {
+	background: #f3f3f3;
+}
+
+.body-drip {
+	border-top: 8px solid #663399;
+}
+// .row.header {
+// 	background: #ff690f;
+// }
+// Full Width Headers
+.header {
+	background: #ff690f;
+	.columns {
+		padding-top: 20px;
+		padding-right: 20px !important;
+		padding-bottom: 20px !important;
+		padding-left: 20px;
+		.logo-white {
+			width: 128px;
+		}
+		.user-icon {
+			width: 32px;
+		}
+	}
+}
+.sub-header {
+	background: #d65600;
+	.columns {
+		padding-top: 10px;
+		padding-right: 10px !important;
+		padding-bottom: 10px !important;
+		padding-left: 10px;
+
+		a {
+			color: white;
+			font-size: 12px;
+			font-weight: 700;
+
+			.icons {
+				width: 20px;
+				margin-right: 10px;
+			}
+		}
+		.menu-divider {
+			display: block;
+			height: 20px;
+			width: 1px;
+			background: #ff690f;
+			background-color: #ff690f;
+		}
+	}
+}
+
+.header .columns {
+	padding-bottom: 0;
+}
+
+.header p {
+	color: #fff;
+	padding-top: 15px;
+}
+
+.header .wrapper-inner {
+	padding: 20px;
+}
+
+.header .container {
+	background: transparent;
+}
+
+// Social Media
+table.button.facebook table td {
+	background: #3b5998 !important;
+	border-color: #3b5998;
+}
+
+table.button.twitter table td {
+	background: #1daced !important;
+	border-color: #1daced;
+}
+
+table.button.google table td {
+	background: #db4a39 !important;
+	border-color: #db4a39;
+}
+
+.wrapper.secondary {
+	background: #f3f3f3;
+}

@@ -1,0 +1,43 @@
+---
+layout: promotional
+subject: My Email Templates
+---
+
+<container>
+    <row collapse header>
+        <columns large="12" small="12">
+            <h1 class="text-center">{{laborDay.title}}</h1>
+        </columns>
+    </row>
+    <row class="collapse menu">
+        <columns large="" small="" valign=""></columns>
+        <columns large="8" small="8">
+            <center>
+                <a href="http://" rel="noopener noreferrer" target="_blank">Link</a>
+                <a href="http://" rel="noopener noreferrer" target="_blank">Link</a>
+                <a href="http://" rel="noopener noreferrer" target="_blank">Link</a>
+                <a href="http://" rel="noopener noreferrer" target="_blank">Link</a>
+            </center>
+        </columns>
+        <columns large="" small="" valign=""></columns>
+    </row>
+    <row>
+        <columns large="12" small="12" valign="middle"></columns>
+    </row>
+    {{#each laborDay.products}}
+        <row class="collapse">
+            <columns large="6" small="6" valign="middle">
+                <h2 class="text-center">{{this.title}}</h2>
+            </columns>
+            <columns large="6" small="6" valign="middle">
+                <span class="text-center">${{this.price}}</span>
+            </columns>
+            <columns large="6" small="6" valign="">
+                <center>
+                    <img src="{{this.imageUrl}}" alt="">
+                </center>
+            </columns>
+        </row>
+
+    {{/each}}
+</container>
