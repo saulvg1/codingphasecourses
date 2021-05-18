@@ -5,36 +5,35 @@ subject: Great Deals today
 ---
 <container>
     <row class="deal-of-day">
-        <columns large="" small="" valign="">
+        <columns>
             <h2>
                 Deal of the Day</h2>
-            <img src="{{root}}/assets/img/ireland.png" alt="" srcset="">
-            <p>Ireland: 8 days with air, hotel and car rental. use promo code CFDL11 to save. Price reflects NYC departure, other cities available</p>
-            <span class="save-amount">Save $110 with code</span>
-            <span class="tiny-info">Gate 1 Travel</span>
-            <span class="price">$649+</span>
+            <img src="{{kayakEmail.dealOfTheDay.image}}" alt="" srcset="">
+            <p>{{kayakEmail.dealOfTheDay.location}}: {{kayakEmail.dealOfTheDay.description}}</p>
+            <span class="save-amount">{{kayakEmail.dealOfTheDay.saveAmount}}</span>
+            <span class="tiny-info">{{kayakEmail.dealOfTheDay.tinyInfo}}</span>
+            <span class="price">${{kayakEmail.dealOfTheDay.price}}+</span>
             <center>
-                <a class="button" href="#">See Deal</a>
+                <a class="button" href="{{kayakEmail.dealOfTheDay.link}}">See Deal</a>
             </center>
-
         </columns>
     </row>
 </container>
 <container>
     <row class="content-area">
         <columns class="first-offer">
-            <row class="offer">
-                <columns large="" small="" valign="">
-                    <img src="{{root}}/assets/img/cancun.png" alt="" srcset="">
-                    <p>Cancun: 4 nights with air and Melody Maker Cancun stay. Price reflects MIA Departure, other cities available</p>
-                    <span class="save-amount">Save up to 65%</span>
-                    <span class="tiny-info">CheapCaribbean.com</span>
-                    <span class="price">$689+</span>
-
-                    <a class="button" href="#">See Deal</a>
-
-                </columns>
-            </row>
+            {{#each kayakEmail.offers}}
+                <row class="offer">
+                    <columns large="" small="" valign="">
+                        <img src="{{this.image}}" alt="{{this.image}}" srcset="">
+                        <p>{{this.location}}: {{this.description}}</p>
+                        <span class="save-amount">{{this.saveAmount}}</span>
+                        <span class="tiny-info">{{this.tinyInfo}}</span>
+                        <span class="price">${{this.price}}+</span>
+                        <a class="button" href="{{this.link}}">See Deal</a>
+                    </columns>
+                </row>
+            {{/each}}
         </columns>
     </row>
 </container>
@@ -45,15 +44,16 @@ subject: Great Deals today
                 <columns large="" small="" valign="">
                     <row>
                         <columns>
-                            <img class="group-icons" src="{{root}}/assets/img/airplane_dark.png" alt="" srcset="">
+                            <img
+                                alt=""
+                                class="group-icons"
+                                src="https://i.imgur.com/1ePUkq5.png"
+                                srcset="">
                         </columns>
                     </row>
-
                     <h4>Still looking? There's more</h4>
                     <p>Search hundreds of deals to suit your budget on flights, packages, cruses and more.</p>
-
                     <a class="button" href="#">See Deal</a>
-
                 </columns>
             </row>
         </columns>
