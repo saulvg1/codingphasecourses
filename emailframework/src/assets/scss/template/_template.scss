@@ -7,6 +7,7 @@ body,
 .body {
 	background-color: $body-background;
 	background: $body-background;
+	padding-bottom: 300px;
 }
 
 body,
@@ -50,13 +51,15 @@ html,
 		padding-left: 10px;
 
 		a {
-			color: white;
-			font-size: 12px;
+			color: #ffffff;
 			font-weight: 700;
+			font-size: 12px;
 
 			.icons {
 				width: 20px;
-				margin-right: 10px;
+				margin-right: 5px;
+				display: inline-block;
+				vertical-align: bottom;
 			}
 		}
 		.menu-divider {
@@ -65,6 +68,167 @@ html,
 			width: 1px;
 			background: #ff690f;
 			background-color: #ff690f;
+		}
+		th {
+			text-align: center;
+		}
+	}
+}
+.deal-of-day {
+	background: #13191f;
+	background-color: #13191f;
+	.columns {
+		th {
+			padding: 30px 0 20px;
+		}
+	}
+	h2 {
+		color: #ffffff;
+		font-weight: 900;
+		font-size: 30px;
+		text-align: center;
+		padding: 20px;
+	}
+	p {
+		text-align: center;
+		font-size: 16;
+		color: #ffffff;
+		padding: 20px 0 30px;
+	}
+	span {
+		display: block;
+		text-align: center;
+		font-size: 16;
+		color: #ffffff;
+		&.save-amount {
+			font-size: 14px;
+		}
+		&.tiny-info {
+			font-size: 10px;
+			font-weight: 300;
+			padding-bottom: 10px;
+		}
+		&.price {
+			font-size: 20px;
+			font-weight: 600;
+			padding-bottom: 10px;
+		}
+	}
+	.button {
+		display: inline-block;
+		width: 100px;
+		text-align: center;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		border: 1px solid #fff;
+		border-radius: 5px;
+		text-decoration: none;
+		color: #ffffff;
+
+		&:hover {
+			color: #ff690f;
+		}
+	}
+}
+
+.content-area {
+	background-color: #f1f4f7;
+	background: #f1f4f7;
+	& > tbody > tr > th {
+		padding-top: 0;
+	}
+	.first-offer {
+		padding-top: 16px;
+	}
+	.group-icons {
+		padding: 20px;
+	}
+
+	.offer {
+		background: #ffffff;
+		background-color: #ffffff;
+		.columns {
+			& > table {
+				table-layout: fixed;
+				max-width: 560px;
+			}
+			th {
+				padding: 20px;
+			}
+		}
+		h2 {
+			color: #334755;
+			font-weight: 900;
+			font-size: 30px;
+			text-align: center;
+			padding: 20px;
+		}
+		p {
+			text-align: center;
+			font-size: 18px;
+			font-weight: 500;
+			color: #334755;
+			padding: 20px 0 30px;
+		}
+		span {
+			display: block;
+			text-align: center;
+			font-size: 16;
+			color: #334755;
+			&.save-amount {
+				font-size: 14px;
+				color: #1daced;
+			}
+			&.tiny-info {
+				font-size: 10px;
+				font-weight: 500;
+				padding-bottom: 10px;
+			}
+			&.price {
+				color: #334755;
+				font-size: 20px;
+				font-weight: 600;
+				padding-bottom: 10px;
+			}
+		}
+		.button {
+			display: inline-block;
+			width: 100px;
+			text-align: center;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			border: 1px solid #334755;
+			border-radius: 5px;
+			text-decoration: none;
+			color: #ffffff;
+			background-color: #14181c;
+			margin: 0 auto;
+			display: block;
+
+			&:hover {
+				color: #ff690f;
+			}
+		}
+		&.last-offer {
+			.group-icons {
+				width: 200px;
+				margin: 0 auto;
+				padding-bottom: 0;
+			}
+			h4 {
+				text-align: center;
+				font-size: 16px;
+				font-weight: 600;
+				color: #334755;
+				padding: 0 0 20px 0;
+			}
+			p {
+				text-align: center;
+				font-size: 14px;
+				font-weight: 400;
+				padding: 0 0 20px 0;
+				color: #334755;
+			}
 		}
 	}
 }
@@ -104,4 +268,185 @@ table.button.google table td {
 
 .wrapper.secondary {
 	background: #f3f3f3;
+}
+
+.footer-top {
+	background-color: #334755;
+	// & > tbody > tr > th {
+	// 	padding-top: 30px !important;
+	// 	padding-bottom: 30px !important;
+	// 	padding-left: 30px !important;
+	// 	padding-right: 30px !important;
+	// }
+	.logo-info {
+		padding-top: 30px !important;
+		padding-bottom: 30px !important;
+		padding-left: 30px !important;
+		// padding-right: 30px !important;
+	}
+	th {
+		padding-bottom: 0;
+	}
+	.circle-logo {
+		display: block;
+		margin: 0 auto;
+	}
+	.call-to-action {
+		display: block;
+		color: #ffffff !important;
+	}
+	.info {
+		color: #ffffff !important;
+		font-size: 12px;
+		display: block;
+		hyphens: none;
+	}
+	.store-logos {
+		padding-top: 15px !important;
+		padding-bottom: 15px !important;
+		padding-left: 30px !important;
+		padding-right: 30px !important;
+		img {
+			height: 40px;
+			padding: 10px;
+		}
+		.columns th {
+			padding: 0;
+		}
+	}
+}
+.footer-social {
+	background-color: #222d37;
+
+	th {
+		// padding: 0;
+		background-color: #222d37;
+	}
+	& > tbody > tr {
+		padding-top: 30px !important;
+		padding-right: 0 !important;
+		padding-bottom: 30px !important;
+		padding-left: 0 !important;
+	}
+	th.logo-section.small-6.large-9.columns.first {
+		padding-top: 20px;
+	}
+	th.small-6.large-3.columns.last {
+		padding-top: 20px;
+	}
+
+	.logo-section {
+		padding: 20px;
+		img {
+			width: 128px;
+		}
+	}
+	.social-icons {
+		padding: 0 !important;
+		img {
+			width: 32px;
+			display: block;
+			margin: 0 auto;
+		}
+		& > tbody > tr > th {
+			padding-top: 0 !important;
+			padding-right: 0 !important;
+			padding-bottom: 0 !important;
+			padding-left: 0 !important;
+		}
+	}
+}
+.footer-social > tbody > tr > th {
+	padding: 20px 0;
+	background-color: #222d37;
+}
+.footer-menu {
+	background: #14181c;
+	.columns {
+		padding-top: 10px;
+		padding-right: 10px !important;
+		padding-bottom: 10px !important;
+		padding-left: 10px;
+
+		a {
+			color: #ffffff;
+			font-weight: 700;
+			font-size: 12px;
+
+			.icons {
+				width: 20px;
+				margin-right: 5px;
+				display: inline-block;
+				vertical-align: bottom;
+			}
+		}
+		.menu-divider {
+			display: block;
+			height: 20px;
+			width: 1px;
+			background: #ff690f;
+			background-color: #ff690f;
+		}
+		th {
+			text-align: center;
+		}
+	}
+}
+.footer-bottom {
+	background: #14181c;
+	background-color: #14181c;
+	// &.lower-links {
+	// 	& > tbody > tr > th > table > tbody > tr > th {
+	// 		text-align: center;
+	// 	}
+	// }
+	.lower-links {
+		& > tbody > tr > th > table > tbody > tr > th {
+			text-align: center;
+		}
+		a {
+			font-size: 14px;
+			color: #ffffff;
+			margin-right: 10px;
+			&:nth-child(4) {
+				margin-right: 0;
+			}
+			&:hover {
+				color: $primary-color;
+			}
+		}
+		& > tbody > tr > th {
+			padding-left: 30px !important;
+			padding-right: 30px !important;
+			padding-top: 30px !important;
+			padding-bottom: 30px !important;
+		}
+	}
+	.privacy {
+		th {
+			padding-bottom: 0 !important;
+		}
+		& > tbody > tr > th > table > tbody > tr > th {
+			padding-bottom: 30px;
+		}
+		p {
+			color: #a0a1a3;
+			font-size: 10px;
+		}
+	}
+
+	.copyright,
+	.address {
+		th {
+			padding-bottom: 0;
+		}
+		.columns {
+			& > table > tbody > tr > th {
+				color: #86888a;
+				font-weight: 500;
+				font-size: 14px;
+				padding-bottom: 0px;
+			}
+		}
+	}
 }
